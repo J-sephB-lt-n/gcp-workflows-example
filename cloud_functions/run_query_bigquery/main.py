@@ -17,4 +17,8 @@ def entrypoint_function(request) -> tuple[str, int, dict[str, str]]:
         dict(zip(row.keys(), row.values()))
         for row in bigquery_client.query(query_str).result()
     ]
-    return (json.dumps(result_rows), 200, {"Content-Type": "application/json"})
+    return (
+        json.dumps({"query_result": result_rows}),
+        200,
+        {"Content-Type": "application/json"},
+    )
