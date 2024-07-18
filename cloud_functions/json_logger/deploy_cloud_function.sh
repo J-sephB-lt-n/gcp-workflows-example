@@ -6,7 +6,7 @@ gcloud functions deploy JsonLogger \
   --source=. \
   --entry-point=entrypoint_function \
   --trigger-http \
-  --no-allow-unauthenticated \
+  --allow-unauthenticated \
   --timeout 60 \
   --min-instances 0 \
   --max-instances 1

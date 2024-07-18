@@ -26,5 +26,5 @@ def entrypoint_function(request) -> tuple[str, int, str]:
     return (
         f'{{"completed_at_utc": "{datetime.datetime.now(tz=datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S")}"}}',
         200,
-        "application/json",
+        {"Content-Type": "application/json"},
     )
