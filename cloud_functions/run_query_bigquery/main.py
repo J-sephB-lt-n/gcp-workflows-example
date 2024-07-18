@@ -7,9 +7,10 @@ bigquery_client = google.cloud.bigquery.Client()
 
 
 @functions_framework.http
-def run_bigquery_query(query_str: str) -> tuple[str, int, dict[str, str]]:
+def entrypoint_function(request) -> tuple[str, int, dict[str, str]]:
     """Runs the query in BigQuery, returning the
     result as JSON (a list of dicts)"""
+    query_str: str = request.get_json()["query_string"]
     result_rows: list[dict] = [
         dict(zip(row.keys(), row.values()))
         for row in bigquery_client.query(query_str).result()
