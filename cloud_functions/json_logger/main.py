@@ -4,6 +4,10 @@ import json
 import logging
 
 import functions_framework
+import google.cloud.logging
+
+gcp_logging_client = google.cloud.logging.Client()
+gcp_logging_client.setup_logging()
 
 # set up python logger #
 logging.basicConfig(
