@@ -4,14 +4,14 @@ main:
     - run_query_bigquery:
         call: http.post
         args:
-          url: https://europe-west2-stubbenedge-analytics-c-i-c.cloudfunctions.net/RunQueryBigquery
+          url: https://your-cloud-function-uri-will-go-here
           body:
             query_string: args.query_string
-        result: run_query_biquery_result
+        result: run_query_bigquery_result
     - json_logger:
         call: http.post
         args:
-          url: https://europe-west2-stubbenedge-analytics-c-i-c.cloudfunctions.net/JsonLogger
+          url: https://your-cloud-function-uri-will-go-here
           body:
             query_result: ${run_query_bigquery_result.body.query_result}
         result: json_logger_result
