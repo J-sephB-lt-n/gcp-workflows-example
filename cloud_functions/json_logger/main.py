@@ -1,5 +1,6 @@
 """Cloud function endpoint which receives JSON and logs it to google cloud logging"""
 
+import datetime
 import json
 import logging
 
@@ -18,8 +19,12 @@ logger = logging.getLogger(__name__)
 
 
 @functions_framework.http
-def entrypoint_function(request) -> tuple[str, int]:
+def entrypoint_function(request) -> tuple[str, int, str]:
     """Writes received JSON body to google cloud logging"""
     input_json = request.get_json()
     logger.info(json.dumps(input_json, indent=4, default=str))
-    return ("OK", 200)
+    return (
+        f'{{"completed_at_utc": "{datetime.datetime.now(tz=datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S")}"}}',
+        200,
+        "application/json",
+    )
