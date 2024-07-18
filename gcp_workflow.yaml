@@ -6,7 +6,7 @@ main:
         args:
           url: https://your-cloud-function-uri-will-go-here
           body:
-            query_string: args.query_string
+            query_string: ${args.query_string}
         result: run_query_bigquery_result
     - json_logger:
         call: http.post
