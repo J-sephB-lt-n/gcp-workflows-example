@@ -1,0 +1,20 @@
+# This file was created as follows:
+#   $ python -m venv venv
+#   $ source venv/bin/activate
+#   $ pip install functions-framework
+#   $ pip freeze > requirements.txt
+#   $ deactivate
+#   $ rm -r venv
+blinker==1.8.2
+click==8.1.7
+cloudevents==1.11.0
+deprecation==2.1.0
+Flask==3.0.3
+functions-framework==3.8.0
+gunicorn==22.0.0
+itsdangerous==2.2.0
+Jinja2==3.1.4
+MarkupSafe==2.1.5
+packaging==24.1
+watchdog==4.0.1
+Werkzeug==3.0.3
