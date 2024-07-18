@@ -1,3 +1,5 @@
+"""Cloud function endpoint which runs a query on BigQuery and returns the results as JSON"""
+
 import json
 
 import functions_framework

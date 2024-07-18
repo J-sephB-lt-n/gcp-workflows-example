@@ -1,6 +1,10 @@
 # This file was created as follows:
+#   $ python -m venv venv
+#   $ source venv/bin/activate
 #   $ pip install functions-framework google-cloud-bigquery
 #   $ pip freeze > requirements.txt
+#   $ deactivate
+#   $ rm -r venv
 blinker==1.8.2
 cachetools==5.4.0
 certifi==2024.7.4
