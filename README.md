@@ -20,7 +20,22 @@ curl -m 30 -X POST $JSON_LOGGER_URI \
     -H "Content-Type: application/json" \
     -d '[{"id": 1, "status":"BAD"}, {"id": 2, "status": "GOOD"}]'
 
+# update rows in YAML file to use your cloud function URIs #
+sed -i -e "4s@url: .*@url: ${RUN_QUERY_BIGQUERY_URI}@1" gcp_workflow.yaml
+sed -i -e "9s@url: .*@url: ${JSON_LOGGER_URI}@1" gcp_workflow.yaml
+
+# deploy the GCP workflow #
+gcloud workflows deploy example-workflow \
+    --source gcp_workflow.yaml \
+    --project $GCP_PROJECT_ID \
+    --location $GCP_REGION \
+    --description 'An example workflow illustrating basic functionality of Google Workflows'
+
+# run the GCP workflow #
+gcloud workflows run example-workflow
+
 # clean up #
 source delete_cloud_functions.sh
+source delete_gcp_workflow.sh
 
 ```
